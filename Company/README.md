@@ -1,3 +1,8 @@
+npx create-react-app@latest frontend 
+npm install axios @tanstack/react-query @reduxjs/toolkit react-redux
+npm install axios @tanstack/react-query
+
+
 <!-- registration api  -->
 
 POST :http://127.0.0.1:8000/api/accounts/register/
@@ -42,7 +47,7 @@ response delete access AND refresh token
 
 
 
-<!-- user prifile API  -->
+<!-- user profile API  -->
 GET , PATCH : http://127.0.0.1:8000/api/accounts/profile/
 Bearer token : access token
 {
@@ -51,6 +56,7 @@ Bearer token : access token
     "name": "Johnny",
     "phone_number": "9998887777"
 }
+from this api you can get 
 
 
 <!-- create new company -->
