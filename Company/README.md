@@ -56,7 +56,7 @@ Bearer token : access token
     "name": "Johnny",
     "phone_number": "9998887777"
 }
-from this api you can get 
+from this api you can get user profile details and update profile 
 
 
 <!-- create new company -->
