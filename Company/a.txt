@@ -1,0 +1,11 @@
+Agar user ko call karna hai toh 
+
+import { logout } from "../features/auth/authSlice";
+
+const { user } = useSelector((state) => state.auth);
+
+
+h2>Welcome, {user.name}</h2>
+<p>Email: {user.email}</p>
+
+
