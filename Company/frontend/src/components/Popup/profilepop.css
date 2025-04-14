@@ -1,0 +1,178 @@
+/* In App.css or Navbar.css */
+.profile-wrapper {
+  position: relative;
+}
+
+.profile-popup {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  /* left:  0px; */
+  background: #dddddd;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  color: #292929;
+  /* padding: 10px; */
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 300px;
+}
+
+body.dark .profile-popup {
+  background: #000000;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(188, 188, 188, 0.1);
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  /* margin-bottom: 10px; */
+  padding: 10px;
+  color: #000000;
+}
+
+.popup-header:hover {
+  border-radius: 8px 8px 0 0;
+  background-color: #d0d0d0;
+  /* color: #7c2f2f; */
+}
+
+body.dark .popup-header:hover {
+  border-radius: 8px 8px 0 0;
+  background-color: #242424;
+  /* color: #7c2f2f; */
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #ba8daa;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  /* cursor: pointer; */
+  user-select: none;
+}
+
+.company-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ptrade-name {
+  display: block;
+  font-weight: bold;
+
+  font-size: 14px;
+}
+
+.proprietor-name {
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+}
+
+body.dark .proprietor-name {
+  color: #ffffff;
+}
+
+
+
+.user-summary {
+  font-size: 13px;
+  padding: 2px 10px 5px 10px;
+}
+
+.user-summary:hover {
+  background-color: #d0d0d0;
+}
+
+body.dark .user-summary:hover {
+  background-color: #242424;
+}
+
+.user-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 0;
+  font-weight: bold;
+}
+
+.label {
+  font-weight: 500;
+}
+
+.popup-lists {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+
+  /* margin: 4px 0; */
+  padding-bottom: 10px;
+
+}
+
+.list {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  color: inherit;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px 5px 10px;
+  /* border: none; */
+
+  &:hover {
+    background-color: #d0d0d0;
+    cursor: pointer;
+  }
+
+  body.dark &:hover {
+    background-color: #242424;
+    cursor: pointer;
+  }
+
+}
+
+.icons-list {
+
+  font-size: 18px;
+  font-weight: bold;
+
+}
+
+.logout-btn-p {
+  color: inherit;
+  background-color: inherit;
+  border: none;
+  display: flex;
+  /* color: inherit; */
+  align-items: center;
+  font-size: 14px;
+  gap: 10px;
+  font-weight: bold;
+  padding: 5px 10px 5px 10px;
+
+  &:hover {
+    background-color: #d0d0d0;
+    cursor: pointer;
+  }
+
+  body.dark &:hover {
+    background-color: #242424;
+    cursor: pointer;
+  }
+
+}
+body.dark .logout-btn-p {
+  background-color: #000000;
+}

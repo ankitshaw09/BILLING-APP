@@ -1,0 +1,14 @@
+/* src/components/Footer.css */
+.footer {
+  text-align: center;
+  /* padding: 1rem; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--text);
+  background-color: var(--bg-secondary);
+  border-top: 1px solid #ccc;
+  padding: 0;
+  margin: 0;
+}

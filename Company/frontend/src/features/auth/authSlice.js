@@ -1,41 +1,50 @@
-// src/features/auth/authSlice.js
-import { createSlice } from '@reduxjs/toolkit';
-
-const accessToken = localStorage.getItem('accessToken');
-const refreshToken = localStorage.getItem('refreshToken');
-const user = localStorage.getItem('user');
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  accessToken: accessToken || null,
-  refreshToken: refreshToken || null,
-  user: user ? JSON.parse(user) : null,
+  user: null,
+  accessToken: null,
+  refreshToken: null,
+  isAuthChecked: false, // NEW
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     setCredentials: (state, action) => {
-      const { access, refresh, user } = action.payload;
+      const { user, access, refresh } = action.payload;
+      state.user = user;
       state.accessToken = access;
       state.refreshToken = refresh;
-      state.user = user;
+      state.isAuthChecked = true;
 
-      localStorage.setItem('accessToken', access);
-      localStorage.setItem('refreshToken', refresh);
-      localStorage.setItem('user', JSON.stringify(user));
+
+      localStorage.setItem("accessToken", access);
+      localStorage.setItem("refreshToken", refresh);
+      localStorage.setItem("user", JSON.stringify(user));
     },
     logout: (state) => {
+      state.user = null;
       state.accessToken = null;
       state.refreshToken = null;
-      state.user = null;
+      state.isAuthChecked = true;
+      localStorage.clear();
 
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      localStorage.removeItem('user');
+    },
+    loadUserFromStorage: (state) => {
+      const user = localStorage.getItem("user");
+      const access = localStorage.getItem("accessToken");
+      const refresh = localStorage.getItem("refreshToken");
+
+      if (user && access && refresh) {
+        state.user = JSON.parse(user);
+        state.accessToken = access;
+        state.refreshToken = refresh;
+      }
+      state.isAuthChecked = true; // ✅ flag done
     },
   },
 });
 
-export const { setCredentials, logout } = authSlice.actions;
+export const { setCredentials, logout, loadUserFromStorage } = authSlice.actions;
 export default authSlice.reducer;

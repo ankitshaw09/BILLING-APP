@@ -1,38 +1,68 @@
-.App {
-  text-align: center;
-}
+/* Default Light Mode */
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+} 
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Dark Mode */
+body.dark {
+  --bg-color: #1a1a1a;
+  --text-color: #f5f5f5;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  
+/* Apply to body or wrapper */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Roboto Mono", monospace;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+ .mainLayout{
+    font-family: roboto-mono;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-top: 60px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body.dark .mainLayout{
+    margin-top: 60px;
+    color: #fff;
+    background-color: rgb(0, 0, 0);
+}
+.main-container{
+    /* background-color: antiquewhite; */
+    margin: 0 20px 15px 25px;
+flex: 1;
+
+overflow: hidden;
+}
+
+
+
+
+/* Roboto Mono Font Styles */
+.roboto-mono-regular {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Regular weight */
+  font-style: normal;
+}
+
+.roboto-mono-bold {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700; /* Bold weight */
+  font-style: normal;
+}
+
+.roboto-mono-italic {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Regular weight */
+  font-style: italic;
 }

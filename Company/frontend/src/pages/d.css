@@ -1,0 +1,10 @@
+.d {
+    margin-top: 60px;
+}
+
+/* Dark mode */
+body.dark .sales {
+    /* background-color: aqua; */
+    color: #de2d2d;
+}
+

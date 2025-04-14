@@ -1,0 +1,38 @@
+.doc-settings-popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  background-color: white;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 20px;
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    right: -50%;
+  }
+  to {
+    right: 0;
+  }
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.popup-body {
+  margin-top: 20px;
+}

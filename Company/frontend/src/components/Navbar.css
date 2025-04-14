@@ -1,0 +1,75 @@
+/* Light mode (default) */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    z-index: 1000;
+    width: 100%;
+    padding-left: 30px;
+    border-bottom: 1px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark .navbar {
+    background-color: #000000;
+    border-bottom: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+/* left part  */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.company-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    
+    /* margin-right: 10px; */
+    background-color: #858585;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    
+
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    padding-right:70px;
+    gap: 15px;
+    /* font-size: 22px; */
+
+}
+.icons{
+    font-size: 26px;
+    /* font-weight: bold; */
+    
+}
+body.dark .theme-toggle {
+    /* display: flex; */
+    /* align-items: center; */
+    /* padding-right:50px; */
+    color: #ffffff;
+}
+.theme-toggle {
+    background: none;
+    font-size: 26px;
+    /* color: #ffffff; */
+    border: none;
+    cursor: pointer;
+    /* margin-right: 10px; */
+    margin: 0;
+    padding: 0;
+  }
