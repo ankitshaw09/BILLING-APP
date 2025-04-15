@@ -8,11 +8,12 @@ const MainLayout = ({ children }) => {
   return (
     <div className='mainLayout'  >
       {/* <Navbar /> */}
-      {children}
-      {/* <div className="main-container">{children}</div> */}
+      {/* {children} */}
+      <div className="main-container">{children}</div>
       {/* <Footer /> */}
     </div>
   );
 };
 
 export default MainLayout;
+ 

@@ -61,3 +61,14 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ['id', 'email', 'name', 'phone_number']  # Add other fields if needed
         read_only_fields = ['id', 'email']  # Email shouldn't be updated here
+
+
+# accounts/serializers.py
+
+from rest_framework import serializers
+from .models import DeleteAccountRequest
+
+class DeleteAccountRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DeleteAccountRequest
+        fields = ['message']

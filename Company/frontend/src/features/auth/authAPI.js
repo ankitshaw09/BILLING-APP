@@ -20,6 +20,33 @@ export const logoutUser = async (refreshToken) => {
   return response.data;
 };
 
+// ✅ Logout from All Devices
+export const logoutFromAllDevices = async (accessToken) => {
+  const response = await api.post('/accounts/logout-all/', {}, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  return response.data;
+};
+
+
+// ✅ Request Delete Account
+export const requestAccountDeletion = async (accessToken, message) => {
+  const response = await api.post(
+    "/accounts/request-delete/",
+    { message },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+  return response.data;
+};
+
+
+
 // ✅ Get Profile
 export const fetchUserProfile = async () => {
   const response = await api.get("/accounts/profile/");

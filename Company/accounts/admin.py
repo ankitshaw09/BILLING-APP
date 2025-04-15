@@ -27,3 +27,14 @@ class UserAdmin(BaseUserAdmin):
     )
 
     readonly_fields = ['last_login']
+
+
+# accounts/admin.py
+
+from django.contrib import admin
+from .models import DeleteAccountRequest
+
+@admin.register(DeleteAccountRequest)
+class DeleteAccountRequestAdmin(admin.ModelAdmin):
+    list_display = ('user', 'created_at', 'is_processed')
+    search_fields = ('user__email',)

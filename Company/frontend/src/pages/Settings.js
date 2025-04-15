@@ -5,19 +5,16 @@ import { Link } from "react-router-dom";
 import { MdOutlineSettings } from "react-icons/md";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { FaFileInvoice } from "react-icons/fa"; // invoice icon
-import InvoiceTemplates from "../Popup/InvoiceTemplates"; // adjust path if needed
-import SettingsContent from "../components/SubSettings/SettingsContent";
 
-import DocumentSettingsPopup from "../Popup/DocumentSettingsPopup"; // adjust the path
+import InvoiceTemplates from "../components/Popup/InvoiceTemplates"; // adjust path if needed
+import SettingsContent from "../components/SubSettings/SettingsContent";
+import DocumentSettingsPopup from "../components/Popup/DocumentSettingsPopup";
 import SettingsSidebar from "../components/SubSettings/SettingsSidebar"; // <-- import sidebar
+
 const Settings = () => {
   const [showInvoiceModal, setShowInvoiceModal] = useState(false);
   const [showDocSettings, setShowDocSettings] = useState(false);
   const [selectedSection, setSelectedSection] = useState("profile");
-  // const [activeTab, setActiveTab] = useState("profile"); // <-- track tab
-
-
-
 
   return (
     <div className="settings-layout">
@@ -57,11 +54,12 @@ const Settings = () => {
 
       {/* SETTINGS BODY */}
       <div className="settings-body">
-        <SettingsSidebar selected={selectedSection} setSelected={setSelectedSection} />
+        <SettingsSidebar
+          selected={selectedSection}
+          setSelected={setSelectedSection}
+        />
         <SettingsContent selectedSection={selectedSection} />
       </div>
-
-
     </div>
   );
 };

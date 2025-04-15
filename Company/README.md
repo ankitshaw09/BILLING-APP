@@ -45,6 +45,10 @@ json : {
 
 response delete access AND refresh token
 
+<!-- logout from all devices  -->
+POST :http://127.0.0.1:8000/api/accounts/logout-all/
+Breaer Token { AccessToken}
+
 
 
 <!-- user profile API  -->
@@ -57,6 +61,8 @@ Bearer token : access token
     "phone_number": "9998887777"
 }
 from this api you can get user profile details and update profile 
+
+
 
 
 <!-- create new company -->

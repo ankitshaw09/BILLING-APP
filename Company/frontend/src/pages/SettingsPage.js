@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserProfile, updateUserProfile } from "../features/auth/authAPI";
 import { setCredentials } from "../features/auth/authSlice";
+
+import { fetchUserProfile, updateUserProfile } from "../features/auth/authAPI";
 
 const Settings = () => {
   const dispatch = useDispatch();

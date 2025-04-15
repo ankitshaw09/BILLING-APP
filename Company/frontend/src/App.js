@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
 import Dashboard from "./pages/Dashboard";
-import Settings from "./pages/SettingsPage";
+import Settings from "./pages/Settings";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+// import { loadUserFromStorage } from "./features/auth/authSlice/";
 import { loadUserFromStorage } from "./features/auth/authSlice";
 import MainLayout from "./layouts/MainLayout";
 

@@ -10,10 +10,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Dispatch logout action to clear Redux state and localStorage
     dispatch(logout());
-    
-    // Navigate to the login page (or root if you want)
     navigate("/login");
   };
 
@@ -25,14 +22,7 @@ const Dashboard = () => {
       <p>Email: {user?.email}</p>
       <p>phone no : {user?.phone_number}</p>
       <button onClick={handleLogout}>Logout</button>
-      <h2>Welcome, {user?.name}</h2>
-      <p>Email: {user?.email}</p>
-      <p>phone no : {user?.phone_number}</p>
-      <button onClick={handleLogout}>Logout</button>
-      <h2>Welcome, {user?.name}</h2>
-      <p>Email: {user?.email}</p>
-      <p>phone no : {user?.phone_number}</p>
-      <button onClick={handleLogout}>Logout</button>
+      
     </div>
   );
 };

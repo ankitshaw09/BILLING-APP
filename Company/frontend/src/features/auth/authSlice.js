@@ -42,7 +42,7 @@ const authSlice = createSlice({
         state.refreshToken = refresh;
       }
       state.isAuthChecked = true; // ✅ flag done
-    },
+    }, 
   },
 });
 

@@ -1,20 +1,20 @@
- .mainLayout{
-    font-family: roboto-mono;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin-top: 60px;
-}
+ .mainLayout {
+     font-family: roboto-mono;
+     display: flex;
+     flex-direction: column;
+     min-height: 100vh;
+     margin-top: 55px;
+     overflow: hidden;
+ }
 
-body.dark .mainLayout{
-    margin-top: 60px;
-    color: #fff;
-    background-color: rgb(0, 0, 0);
-}
-.main-container{
-    /* background-color: antiquewhite; */
-    margin: 0 20px 15px 25px;
-flex: 1;
+ body.dark .mainLayout {
+     /* margin-top: 60p/x; */
+     color: #fff;
+     background-color: rgb(0, 0, 0);
+ }
 
-overflow: hidden;
-}
+ .main-container {
+     margin: 0 20px 15px 25px;
+     flex: 1;
+     overflow: hidden;
+ }

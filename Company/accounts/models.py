@@ -2,6 +2,7 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.db import models
 
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -39,3 +40,18 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ["name", "phone_number"]
     def __str__(self):
         return self.email
+
+
+# accounts/models.py
+
+from django.db import models
+from django.conf import settings
+
+class DeleteAccountRequest(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_processed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Delete request from {self.user.email}"

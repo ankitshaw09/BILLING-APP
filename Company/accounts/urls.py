@@ -7,5 +7,7 @@ urlpatterns = [
     path('profile/', UserProfileView.as_view(), name='profile'),
 
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('logout-all/', LogoutAllView.as_view(), name='logout-all'),
+    path('logout-all/', LogoutAllDevicesView.as_view(), name='logout-all'),
+
+    path('request-delete/', DeleteAccountRequestView.as_view(), name='request-delete'),
 ]
