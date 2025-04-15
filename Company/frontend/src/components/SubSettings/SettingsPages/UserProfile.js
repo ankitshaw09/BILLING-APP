@@ -185,14 +185,21 @@ const UserProfile = () => {
         <p>Request Something ? </p>
         {/* <br /> */}
         <span>
-          Want to reset your account data?
-          <a className="clickhere" href="#">
+          Want to reset your account data?{" "}
+          <button
+            className="clickhere"
+            onClick={() => {
+              // Add your reset logic or confirmation here
+              alert("Reset logic goes here!");
+            }}
+          >
             Click here
-          </a>
+          </button>
         </span>
+
         <br />
 
-        <span>
+        {/* <span>
           Logout from all devices?{" "}
           <a
             className="clickhere"
@@ -209,24 +216,37 @@ const UserProfile = () => {
           >
             Click here
           </a>
+        </span> */}
+        <span>
+          Logout from all devices?{" "}
+          <button
+            className="clickhere"
+            onClick={() => {
+              const confirmed = window.confirm(
+                "Are you sure you want to logout from all devices?"
+              );
+              if (confirmed) {
+                handleLogoutAll();
+              }
+            }}
+          >
+            Click here
+          </button>
         </span>
 
         <div className="danger-zone">
           <p className="danger">
             <strong>Danger Zone</strong>
           </p>
+
           <span>
             ❌ Want to delete your account permanently?{" "}
-            <a
-              href="#"
+            <button
               className="clickhere"
-              onClick={(e) => {
-                e.preventDefault();
-                setShowDeleteConfirm(true);
-              }}
+              onClick={() => setShowDeleteConfirm(true)}
             >
               Click here
-            </a>
+            </button>
           </span>
 
           {showDeleteConfirm && (

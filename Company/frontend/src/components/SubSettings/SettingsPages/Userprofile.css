@@ -182,6 +182,7 @@ body.dark .form-input-email {
 
 .popup-box {
     background: #fff;
+    color: #292929;
     padding: 20px 30px;
     border-radius: 12px;
     text-align: center;
@@ -205,3 +206,15 @@ body.dark .form-input-email {
 .popup-actions button:last-child {
     background-color: #ccc;
 }
+
+button.clickhere {
+    background: none;
+    border: none;
+    color: #00c3ff;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0;
+  }
+  

@@ -31,8 +31,8 @@ const SettingsSidebar = ({ selected, setSelected }) => {
         <li>
           <Link
             to="#"
-            onClick={() => setSelected("billing")}
-            className={`sidebar-link ${selected === "billing" ? "active" : ""}`}
+            onClick={() => setSelected("company details")}
+            className={`sidebar-link ${selected === "company details" ? "active" : ""}`}
           >
             <LuBuilding className="sidebar-icon" /> Company Details
           </Link>

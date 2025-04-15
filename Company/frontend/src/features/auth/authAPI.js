@@ -15,7 +15,7 @@ export const loginUser = async (payload) => {
 // ✅ Logout User
 export const logoutUser = async (refreshToken) => {
   const response = await api.post("/accounts/logout/", {
-    refresh_token: refreshToken,
+    refresh: refreshToken,
   });
   return response.data;
 };
