@@ -1,11 +1,14 @@
 import React from 'react'
-
+import "./CompanyDetails.css";
+import "./Userprofile.css";
 const ConpanyDetails = () => {
   return (
-    <div>
-      compoany details 
+    <div className='company-details'>
+
+
     </div>
   )
 }
 
 export default ConpanyDetails
+ 

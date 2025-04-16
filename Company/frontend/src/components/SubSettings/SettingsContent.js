@@ -1,7 +1,7 @@
 import "./SettingsContent.css";
 
 import UserProfile from "./SettingsPages/UserProfile";
-import ConpanyDetails from "./SettingsPages/ConpanyDetails";
+import CompanyDetails from "./SettingsPages/CompanyDetails";
 
 const SettingsContent = ({ selectedSection }) => {
   switch (selectedSection) {
@@ -15,7 +15,7 @@ const SettingsContent = ({ selectedSection }) => {
     case "company details":
       return (
         <div className="settings-content">
-          <ConpanyDetails/>
+          <CompanyDetails/>
         </div>
       );
     case "invoices":
