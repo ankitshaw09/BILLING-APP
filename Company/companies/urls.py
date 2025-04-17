@@ -14,6 +14,7 @@ urlpatterns = [
     path('create-company/', CreateCompanyView.as_view(), name='create-company'),
     path('<int:pk>/profile/', CompanyProfileView.as_view(), name='company-profile'),
     path('companies-list/', CompanyListView.as_view(), name='company-list'),
+    path('<int:company_id>/delete/', DeleteCompanyView.as_view(), name='delete-company'),
 ]
 
 urlpatterns += router.urls

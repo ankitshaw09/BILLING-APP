@@ -90,10 +90,23 @@ Json :
 
 here company/1/profile/ = "1" is company_id
 
+
 <!-- get company list  -->
 
 GET : http://127.0.0.1:8000/api/company/companies-list/
 Breaer Token { AccessToken}
+
+<!-- Delete company   -->
+
+Delete  : http://127.0.0.1:8000/api/company/1/delete/
+Breaer Token { AccessToken}
+
+here company/1/delete/ = "1" is company_id
+
+
+
+
+ 
 
 <!-- Create /GET company Address     -->
 

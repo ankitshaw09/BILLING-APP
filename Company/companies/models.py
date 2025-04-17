@@ -1,11 +1,7 @@
 # company/models.py
 
 from django.db import models
-
-# companies/models.py
 from django.conf import settings
-
-from django.db import models
 
 class Company(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='owned_companies')
@@ -56,7 +52,6 @@ class ShippingAddress(BaseAddress):
     def __str__(self):
         return f"{self.company.trade_name} - Shipping Address"
 
-
 class CompanyStamp(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='stamps')
     name = models.CharField(max_length=100)
@@ -64,7 +59,6 @@ class CompanyStamp(models.Model):
 
     def __str__(self):
         return f"{self.company.trade_name} - {self.name}"
-
 
 class CompanySignature(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='signatures')

@@ -1,10 +1,13 @@
 # companies/views.py
+from .models import *
+from .serializers import *
+from rest_framework import status,viewsets,generics, permissions
 
-from rest_framework import generics, permissions
 from rest_framework.response import Response
-from rest_framework import status
-from .models import Company
-from .serializers import CompanySerializer
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
+from rest_framework.exceptions import ValidationError
 
 
 class CreateCompanyView(generics.CreateAPIView):
@@ -24,14 +27,6 @@ class CreateCompanyView(generics.CreateAPIView):
         serializer.save(user=user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-
-# companies/views.py
-
-from rest_framework import generics, permissions
-from .models import Company
-from .serializers import CompanySerializer
-
-
 class CompanyProfileView(generics.RetrieveUpdateAPIView):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
@@ -40,12 +35,6 @@ class CompanyProfileView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return Company.objects.get(pk=self.kwargs["pk"], user=self.request.user)
 
-
-from rest_framework.generics import ListAPIView
-from rest_framework.permissions import IsAuthenticated
-from companies.models import Company
-from companies.serializers import CompanySerializer
-
 class CompanyListView(ListAPIView):
     serializer_class = CompanySerializer
     permission_classes = [IsAuthenticated]
@@ -53,21 +42,23 @@ class CompanyListView(ListAPIView):
     def get_queryset(self):
         return Company.objects.filter(user=self.request.user)
 
+class DeleteCompanyView(APIView):
+    permission_classes = [IsAuthenticated]
 
-from rest_framework.exceptions import ValidationError
-from companies.models import Company, BillingAddress, ShippingAddress
+    def delete(self, request, company_id):
+        try:
+            company = Company.objects.get(id=company_id, user=request.user)
+        except Company.DoesNotExist:
+            return Response(
+                {"detail": "Company not found or not owned by user."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
 
-# companies/views.py
-
-from rest_framework import viewsets
-from .models import CompanyAddress, BillingAddress, ShippingAddress
-from .serializers import (
-    CompanyAddressSerializer,
-    BillingAddressSerializer,
-    ShippingAddressSerializer,
-)
-from rest_framework.permissions import IsAuthenticated
-
+        company.delete()
+        return Response(
+            {"detail": "Company deleted successfully."},
+            status=status.HTTP_204_NO_CONTENT,
+        )
 
 class CompanyAddressViewSet(viewsets.ModelViewSet):
     serializer_class = CompanyAddressSerializer
@@ -85,7 +76,6 @@ class CompanyAddressViewSet(viewsets.ModelViewSet):
             raise ValidationError("Company already has a company address.")
 
         serializer.save(company=company)
-
 
 class BillingAddressViewSet(viewsets.ModelViewSet):
     serializer_class = BillingAddressSerializer
@@ -111,7 +101,6 @@ class BillingAddressViewSet(viewsets.ModelViewSet):
             status=status.HTTP_204_NO_CONTENT,
         )
 
-
 class ShippingAddressViewSet(viewsets.ModelViewSet):
     serializer_class = ShippingAddressSerializer
     permission_classes = [IsAuthenticated]
@@ -136,15 +125,6 @@ class ShippingAddressViewSet(viewsets.ModelViewSet):
             status=status.HTTP_204_NO_CONTENT,
         )
 
-
-# views.py
-
-from rest_framework import viewsets, permissions
-from rest_framework.exceptions import ValidationError
-from .models import CompanyStamp, CompanySignature, Company
-from .serializers import CompanyStampSerializer, CompanySignatureSerializer
-
-
 class CompanyStampViewSet(viewsets.ModelViewSet):
     serializer_class = CompanyStampSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -153,14 +133,13 @@ class CompanyStampViewSet(viewsets.ModelViewSet):
         return CompanyStamp.objects.filter(company__user=self.request.user)
 
     def perform_create(self, serializer):
-        company_id = self.request.data.get('company')
+        company_id = self.request.data.get("company")
         company = Company.objects.get(id=company_id, user=self.request.user)
 
         if CompanyStamp.objects.filter(company=company).count() >= 5:
             raise ValidationError("A company can only have up to 5 stamps.")
 
         serializer.save(company=company)
-
 
 class CompanySignatureViewSet(viewsets.ModelViewSet):
     serializer_class = CompanySignatureSerializer
@@ -170,7 +149,7 @@ class CompanySignatureViewSet(viewsets.ModelViewSet):
         return CompanySignature.objects.filter(company__user=self.request.user)
 
     def perform_create(self, serializer):
-        company_id = self.request.data.get('company')
+        company_id = self.request.data.get("company")
         company = Company.objects.get(id=company_id, user=self.request.user)
 
         if CompanySignature.objects.filter(company=company).count() >= 2:
