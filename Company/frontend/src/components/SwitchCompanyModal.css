@@ -1,0 +1,46 @@
+/* src/components/SwitchCompanyModal.css */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .modal-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+  }
+  .modal-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .modal-box li {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .modal-box li:hover {
+    background: #f0f0f0;
+  }
+  .modal-box li.selected {
+    background: #d0f0ff;
+    font-weight: bold;
+  }
+  .close-btn {
+    margin-top: 15px;
+    background: #333;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

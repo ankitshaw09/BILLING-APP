@@ -1,0 +1,67 @@
+/* src/pages/Dashboard.css */
+
+.dashboard-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9fafc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px 0 10px;
+  }
+  
+  .create-button,
+  .update-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .create-button {
+    background-color: #28a745;
+    margin-bottom: 20px;
+  }
+  
+  .create-button:hover,
+  .update-button:hover {
+    opacity: 0.9;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    margin-bottom: 4px;
+    text-transform: capitalize;
+  }
+  
+  .form-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  

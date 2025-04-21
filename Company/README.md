@@ -54,6 +54,8 @@ Breaer Token { AccessToken}
 POST :http://127.0.0.1:8000/api/accounts/request-delete/
 Breaer Token { AccessToken}
 
+
+<!--      COMPANY                  -->
 <!-- Create new company  -->
 
 POST:http://127.0.0.1:8000/api/company/create-company/

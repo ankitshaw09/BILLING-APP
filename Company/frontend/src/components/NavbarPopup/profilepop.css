@@ -147,6 +147,13 @@ body.dark .user-summary:hover {
 
   font-size: 18px;
   font-weight: bold;
+  color: #000000;
+
+}
+
+body.dark .icons-list {
+
+  color: #ffffff;
 
 }
 
@@ -173,6 +180,8 @@ body.dark .user-summary:hover {
   }
 
 }
+
 body.dark .logout-btn-p {
   background-color: #000000;
+  color: #ffffff;
 }

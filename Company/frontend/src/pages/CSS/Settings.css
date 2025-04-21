@@ -1,5 +1,13 @@
 .settings-layout {
     /* margin: 0 20px 15px 25px; */
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark .settings-layout {
+    /* margin: 0 20px 15px 25px; */
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .settings-header {
@@ -7,8 +15,8 @@
     align-items: center;
     justify-content: space-between;
     padding-right: 25px;
-    padding-top: 10px;
-    padding-left: 10px;
+    padding-top: 60px;
+    padding-left: 50px;
     color: inherit;
 }
 
@@ -52,7 +60,7 @@
 .right .Documents {
     background-color: inherit;
     color: inherit;
-    border:none;
+    border: none;
     padding: 0;
     margin: 0;
     gap: 5px;
@@ -62,7 +70,8 @@
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
         color: #06b5fb;
     }
 }
@@ -88,6 +97,7 @@
 
 body.dark .invoice-btn {
     border: 3px solid #d59b9b;
+
     &:hover {
         background-color: #0056b3;
     }
@@ -99,17 +109,35 @@ body.dark .invoice-btn {
     display: flex;
     flex: 1;
     gap: 20px;
-  }
-  
-  /* .settings-content {
+}
+
+/* .settings-content {
     flex: 1;
     padding: 20px;
 
     color: var(--text);
   } */
 
-  .settings-sidebar li.active {
+.settings-sidebar li.active {
     color: var(--primary);
     font-weight: bold;
-  }
-  
+}
+
+
+.settings-content {
+    background-color: #b4b4b4;
+    border-radius: 8px;
+    flex: 1;
+
+    padding-left: 20px;
+    height: 100%;
+    margin: 10px 15px 15px 0;
+
+
+}
+
+
+body.dark .settings-content {
+    background-color: #404040;
+
+}

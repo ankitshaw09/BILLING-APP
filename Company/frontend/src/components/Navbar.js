@@ -1,49 +1,104 @@
 // src/components/Navbar.js
-import React from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../features/ui/uiSlice";
-import { logout } from "../features/auth/authSlice";
-import { CgProfile } from "react-icons/cg";
+
 import { CiDark } from "react-icons/ci";
 import { WiDaySunny } from "react-icons/wi";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import "./Navbar.css";
-// import ProfilePopup from "../Popup/ProfilePopup"; 
-import ProfilePopup from "./Popup/ProfilePopup"; 
-
+import { IoIosAddCircleOutline } from "react-icons/io";
+import ProfilePopup from "./NavbarPopup/ProfilePopup";
+import { FaEdit } from "react-icons/fa";
+import { CiShare2 } from "react-icons/ci";
 // import it
+import { FaArrowRightLong } from "react-icons/fa6";
 const Navbar = () => {
   const theme = useSelector((state) => state.ui.theme);
-  const profile = useSelector((state) => state.profile.profile);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const handleLogout = () => {
-    dispatch(logout());
-    navigate("/");
-  };
+  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+
+  const [showPopup, setShowPopup] = useState(false);
+  const popupRef = useRef(null);
+
+  const togglePopup = () => setShowPopup((prev) => !prev);
+
+  // Close popup if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setShowPopup(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const { companies, selectedCompanyId } = useSelector(
+    (state) => state.company
+  );
+  const selectedCompany = companies.find(
+    (company) => company.id === selectedCompanyId
+  );
 
   return (
     <nav className="navbar">
-      <div className="navbar-left">
-        {profile?.company_logo && (
+      {/* {selectedCompany ? ( */}
+        <div className="navbar-left">
           <Link to="/dashboard">
-            <img
-              src={profile.company_logo}
-              alt="Company Logo"
-              className="company-logo"
-            />
+            {selectedCompany?.company_logo ? (
+              <img
+                src={selectedCompany.company_logo}
+                alt="Company Logo"
+                className="company-logo"
+              />
+            ) : (
+              <div className="company-logo-fallback">Logo</div>
+            )}
           </Link>
-        )}
-        <span className="company-name">{profile?.trade_name || "Company"}</span>
-      </div>
+          {/* Trade name + popup trigger */}
+          <span className="company-name" onClick={togglePopup}>
+            {selectedCompany?.trade_name || "Company"}
+          </span>
+
+          {/* Popup just below */}
+          {showPopup && (
+            <div className="company-popup" ref={popupRef}>
+              <div className="names">
+                <span className="popup-trade-name" onClick={togglePopup}>
+                  {selectedCompany?.trade_name || "Company"}
+                </span>
+                <span className="owner-name" onClick={togglePopup}>
+                  {selectedCompany?.proprietor_name || "Company"}
+                </span>
+              </div>
+
+              {/* <div> */}
+              <div className="popup-icons">
+                <Link to="/settings/company-details" className="popup-edit">
+                  <FaEdit /> Edit
+                </Link>
+                <Link to="/dashboard" className="popup-share">
+                  <CiShare2 /> Share
+                </Link>
+              </div>
+              <hr />
+              <Link to="/create-company" className="popup-add-co">
+                <IoIosAddCircleOutline className="add" tyle={{ marginRight: "8px" }} />
+                Add New Company
+                <FaArrowRightLong className = "right-arrow"  />
+              </Link>
+            </div>
+          )}
+        </div>
+      {/* ) : (
+        <p>No company selected.</p>
+      )} */}
 
       {/* right */}
       <div className="navbar-right">
-        {/* <div className="icons">
-          <CgProfile className="icons" />
-        </div> */}
         <ProfilePopup />
 
         <div className="icons">
@@ -57,7 +112,6 @@ const Navbar = () => {
             {theme === "light" ? <CiDark /> : <WiDaySunny />}
           </button>
         </div>
-
       </div>
     </nav>
   );

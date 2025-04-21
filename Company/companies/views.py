@@ -16,7 +16,7 @@ class CreateCompanyView(generics.CreateAPIView):
 
     def create(self, request, *args, **kwargs):
         user = request.user
-        if user.companies.count() >= 3:
+        if user.owned_companies.count() >= 3:  # ✅ Correct related_name
             return Response(
                 {"error": "You can only create up to 3 companies."},
                 status=status.HTTP_400_BAD_REQUEST,

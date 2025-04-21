@@ -1,0 +1,27 @@
+/* src/components/Sidebar.css */
+.sidebar {
+    width: 220px;
+    background-color: #b4b4b4;
+    /* padding: 24px; */
+    box-sizing: border-box;
+    margin : 15px 15px 15px 15px;
+    border-radius: 8px;
+    height: fit-content;
+    overflow-y: auto;
+}
+body.dark .sidebar{
+    background-color: #404040;
+
+}
+
+
+.sidebar::-webkit-scrollbar{
+    width: 0;
+}
+
+.sidebar {
+    -ms-overflow-style: none;
+    /* Hide the scrollbar for IE and Edge */
+    scrollbar-width: none;
+    /* Hide the scrollbar for Firefox */
+}
