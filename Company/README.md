@@ -166,7 +166,7 @@ here company/1/addresses/billing/ = "1" is company_id
 
 PATCH :http://127.0.0.1:8000/api/company/1/addresses/billing/2/
 Breaer Token { AccessToken}
-Json :
+Json : 
 {
 "name": "Head Office",
 "address_line_1": "123 Corporate Park",
@@ -231,9 +231,13 @@ Breaer Token { AccessToken}
 here company/1/addresses/shipping/ = "1" is company_id
 here addresses/shipping/2/ = "2" is Shipping_address_id
 
+
+
+
+
 <!-- Get/ create stamps -->
 
-GET / POST: http://127.0.0.1:8000/api/company/stamps/
+GET / POST: http://127.0.0.1:8000/api/company/<company_id>/stamp/
 Breaer Token { AccessToken}
 json :
 {
@@ -246,9 +250,8 @@ json :
 
 <!-- PATCH / DELETE stamps -->
 
-PATCH / DELETE: http://127.0.0.1:8000/api/company/stamps/1/
+PATCH / DELETE:http://127.0.0.1:8000/api/company/<company_id>/stamp/<stamp_id>/
 Breaer Token { AccessToken}
-here company/stamps/1/ = "1" is stamp_id
 json :
 {
 
@@ -259,12 +262,12 @@ json :
 
 <!-- Get/ create Signature -->
 
-GET / POST: http://127.0.0.1:8000/api/company/signatures/
+GET / POST: http://127.0.0.1:8000/api/company/<company_id>/signature/
 Breaer Token { AccessToken}
 json :
 {
 
-        "company": 1
+       
         "name": "Official sign",
         "stamp_image": "http://127.0.0.1:8000/media/company_stamps/hanuman_jee.jpg",
     }
@@ -272,16 +275,9 @@ json :
 
 <!-- PATCH / DELETE signatures -->
 
-PATCH / DELETE: http://127.0.0.1:8000/api/company/signatures/1/
+PATCH / DELETE: http://127.0.0.1:8000/api/company/<company_id>/signature/<signature_id>/
 Breaer Token { AccessToken}
-here company/signatures/1/ = "1" is signatures_id
-json :
-{
 
-        "company": 1
-        "name": "Official sign",
-        "stamp_image": "http://127.0.0.1:8000/media/company_stamps/hanuman_jee.jpg",
-    }
 
 
 

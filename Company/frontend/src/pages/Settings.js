@@ -7,14 +7,14 @@ import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { FaFileInvoice } from "react-icons/fa"; // invoice icon
 
 import InvoiceTemplates from "../components/Popup/InvoiceTemplates"; // adjust path if needed
-import SettingsContent from "../components/SubSettings/SettingsContent";
+
 import DocumentSettingsPopup from "../components/Popup/DocumentSettingsPopup";
 import SettingsSidebar from "../components/SubSettings/SettingsSidebar"; // <-- import sidebar
 import { Outlet } from "react-router-dom";
 const Settings = () => {
   const [showInvoiceModal, setShowInvoiceModal] = useState(false);
   const [showDocSettings, setShowDocSettings] = useState(false);
-  const [selectedSection, setSelectedSection] = useState("profile");
+  // const [selectedSection, setSelectedSection] = useState("profile");
 
   return (
     <div className="settings-layout">

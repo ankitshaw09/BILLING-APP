@@ -4,9 +4,10 @@
 
 .form-logo {
   display: flex;
+  flex: 2;
   align-items: center;
   gap: 50px;
-  padding-right: 320px;
+  /* padding-right: 300px; */
 
 }
 
@@ -35,9 +36,33 @@
 .form-row select {
   flex: 2;
   padding: 8px;
+  background-color: #c9c9c9;
   font-size: 14px;
-  border: 1px solid #ccc;
+  border: 1px solid #878787;
   border-radius: 4px;
+  
+  &:hover{
+    border: 2px solid #000000;
+
+  }
+}
+
+.btn{
+  background-color: rgb(0, 81, 255);
+  box-shadow: none;
+  border: none;
+width: 150px;
+cursor: pointer
+;
+height:50px;
+font-size: large;
+font-weight: bold;
+color: #ffffff;
+border-radius: 8px;
+&:hover{
+  
+  background-color: rgb(68, 103, 178);
+}
 }
 
 

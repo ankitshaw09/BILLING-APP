@@ -18,10 +18,25 @@ import {
   setCompanies,
 } from "./features/company/companySlice";
 
+import axios from "axios";
 import CreateCompany from "./pages/CreateCompany";
+
 import UserProfile from "./components/SubSettings/SettingsPages/UserProfile";
 import CompanyDetails from "./components/SubSettings/SettingsPages/CompanyDetails";
-import axios from "axios";
+import AllCompanies from "./components/SubSettings/SettingsPages/AllCompanies";
+
+import Preferences from "./components/SubSettings/SettingsPages/Preferences";
+import Thermal from "./components/SubSettings/SettingsPages/Thermal";
+import BarcodeSettings from "./components/SubSettings/SettingsPages/BarcodeSettings";
+import Signatures from "./components/SubSettings/SettingsPages/Signatures";
+import NotesAndTerms from "./components/SubSettings/SettingsPages/NotesAndTerms";
+import AutoReminders from "./components/SubSettings/SettingsPages/AutoReminders";
+import Banks from "./components/SubSettings/SettingsPages/Banks";
+import PaymentGateway from "./components/SubSettings/SettingsPages/PaymentGateway";
+import TallyIntegration from "./components/SubSettings/SettingsPages/TallyIntegration";
+import APIIntegration from "./components/SubSettings/SettingsPages/APIIntegration";
+import SocialLinks from "./components/SubSettings/SettingsPages/SocialLinks";
+import Support from "./components/SubSettings/SettingsPages/Support";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,8 +59,6 @@ function App() {
   useEffect(() => {
     dispatch(loadUserFromStorage());
   }, [dispatch]);
-
-
 
   // Fetch companies from API if accessToken exists
   useEffect(() => {
@@ -122,6 +135,19 @@ function App() {
           >
             <Route path="user-profile" element={<UserProfile />} />
             <Route path="company-details" element={<CompanyDetails />} />
+            <Route path="all-companies" element={<AllCompanies />} />
+            <Route path="preferences" element={<Preferences />} />
+            <Route path="thermal-print" element={<Thermal />} />
+            <Route path="barcode" element={<BarcodeSettings />} />
+            <Route path="signature" element={<Signatures />} />
+            <Route path="notes_terms" element={<NotesAndTerms />} />
+            <Route path="auto-reminder" element={<AutoReminders />} />
+            <Route path="bank" element={<Banks />} />
+            <Route path="payment-geteway" element={<PaymentGateway />} />
+            <Route path="tally-integration" element={<TallyIntegration />} />
+            <Route path="api-integration" element={<APIIntegration />} />
+            <Route path="social-links" element={<SocialLinks />} />
+            <Route path="support" element={<Support />} />
             <Route index element={<Navigate to="user-profile" replace />} />
           </Route>
 
@@ -145,16 +171,17 @@ function App() {
         </Routes>
 
         {isLoggedIn && <Footer />}
-        <ToastContainer position="top-right" autoClose={3000} />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          className="toast-css"
+        />
       </div>
     </BrowserRouter>
   );
 }
 
 export default App;
-
-
-
 
 // import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // import Dashboard from "./pages/Dashboard";

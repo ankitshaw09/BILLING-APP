@@ -81,8 +81,10 @@ class BillingAddressViewSet(viewsets.ModelViewSet):
     serializer_class = BillingAddressSerializer
     permission_classes = [IsAuthenticated]
 
+
     def get_queryset(self):
-        return BillingAddress.objects.filter(company__user=self.request.user)
+        company_id = self.kwargs["company_id"]
+        return BillingAddress.objects.filter(company_id=company_id, company__user=self.request.user)
 
     def perform_create(self, serializer):
         company_id = self.kwargs["company_id"]
@@ -106,7 +108,9 @@ class ShippingAddressViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return ShippingAddress.objects.filter(company__user=self.request.user)
+        company_id = self.kwargs["company_id"]
+        return ShippingAddress.objects.filter(company_id=company_id, company__user=self.request.user)
+
 
     def perform_create(self, serializer):
         company_id = self.kwargs["company_id"]
@@ -127,10 +131,11 @@ class ShippingAddressViewSet(viewsets.ModelViewSet):
 
 class CompanyStampViewSet(viewsets.ModelViewSet):
     serializer_class = CompanyStampSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return CompanyStamp.objects.filter(company__user=self.request.user)
+        company_id = self.kwargs['company_id']
+        return CompanyStamp.objects.filter(company_id=company_id, company__user=self.request.user)
 
     def perform_create(self, serializer):
         company_id = self.request.data.get("company")
@@ -141,12 +146,14 @@ class CompanyStampViewSet(viewsets.ModelViewSet):
 
         serializer.save(company=company)
 
+
 class CompanySignatureViewSet(viewsets.ModelViewSet):
     serializer_class = CompanySignatureSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return CompanySignature.objects.filter(company__user=self.request.user)
+        company_id = self.kwargs['company_id']
+        return CompanySignature.objects.filter(company_id=company_id, company__user=self.request.user)
 
     def perform_create(self, serializer):
         company_id = self.request.data.get("company")

@@ -12,6 +12,12 @@ import {
 import "./CompanyDetails.css";
 import { GiSevenPointedStar } from "react-icons/gi";
 
+
+import CompanyAddress from '../../Address/companyaddress';
+import BillingAddress from '../../Address/billingaddress';
+import ShippingAddress from '../../Address/shippingaddress';
+
+
 const CompanyDetails = () => {
   const dispatch = useDispatch();
   const { currentCompany } = useSelector((state) => state.company);
@@ -329,16 +335,13 @@ const CompanyDetails = () => {
 
         <div className="form-row">
           <button type="submit" className="btn" disabled={loading}>
-            {loading ? "Updating..." : "Update Details"}
+            {loading ? "Updating..." : "Save & Update"}
           </button>
         </div>
       </form>
 
-      <div className="form-group">
-        <button className="btn btn-danger" onClick={handleDelete}>
-          Delete Company
-        </button>
-      </div>
+
+
 
       {/* Modal for full-size logo */}
       {showLogoModal && (
@@ -361,17 +364,27 @@ const CompanyDetails = () => {
           </div>
         </div>
       )}
+
+
+{/* address */}
+
+
+<div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+      <div style={{ flex: '1 1 30%' }}>
+        <CompanyAddress />
+      </div>
+      <div style={{ flex: '1 1 30%' }}>
+        <BillingAddress />
+      </div>
+      <div style={{ flex: '1 1 30%' }}>
+        <ShippingAddress />
+      </div>
+    </div>
+
+
+
     </div>
   );
 };
 
 export default CompanyDetails;
-        {/* <div className="form-row">
-          <label htmlFor="address">Address</label>
-          <textarea
-            id="address"
-            name="address"
-            value={companyData.address}
-            onChange={handleChange}
-          />
-        </div> */}

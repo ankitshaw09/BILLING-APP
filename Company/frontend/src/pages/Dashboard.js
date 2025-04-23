@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { logout } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../features/auth/authAPI";
@@ -7,7 +7,7 @@ import { logoutUser } from "../features/auth/authAPI";
 import "./Dashboard.css"; // Custom CSS for Dashboard
 
 import { getCompanyList } from "../features/company/companyAPI";
-import { setCompanies, setCurrentCompany } from "../features/company/companySlice";
+import { setCompanies} from "../features/company/companySlice";
 
 
 const Dashboard = () => {
@@ -35,7 +35,7 @@ const handleLogout = async () => {
 
   const accessToken = useSelector((state) => state.auth.accessToken);
   // const companies = useSelector((state) => state.company.companies);
-  const currentCompany = useSelector((state) => state.company.currentCompany);
+  // const currentCompany = useSelector((state) => state.company.currentCompany);
 
   // Fetch all companies on page load
   useEffect(() => {

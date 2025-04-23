@@ -7,8 +7,9 @@ router.register(r'(?P<company_id>\d+)/addresses/company', CompanyAddressViewSet,
 router.register(r'(?P<company_id>\d+)/addresses/billing', BillingAddressViewSet, basename='billing-address')
 router.register(r'(?P<company_id>\d+)/addresses/shipping', ShippingAddressViewSet, basename='shipping-address')
 
-router.register(r'stamps', CompanyStampViewSet, basename='company-stamps')
-router.register(r'signatures', CompanySignatureViewSet, basename='company-signatures')
+router.register(r'(?P<company_id>\d+)/stamp', CompanyStampViewSet, basename='company-stamp')
+router.register(r'(?P<company_id>\d+)/signature', CompanySignatureViewSet, basename='company-signature')
+
 
 urlpatterns = [
     path('create-company/', CreateCompanyView.as_view(), name='create-company'),
