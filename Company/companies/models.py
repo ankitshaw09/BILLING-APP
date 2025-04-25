@@ -30,7 +30,7 @@ class BaseAddress(models.Model):
     state = models.CharField(max_length=100)
     country = models.CharField(max_length=100, default='India')
 
-    class Meta:
+    class Meta: 
         abstract = True
 
 
@@ -67,3 +67,5 @@ class CompanySignature(models.Model):
 
     def __str__(self):
         return f"{self.company.trade_name} - {self.name}"
+
+

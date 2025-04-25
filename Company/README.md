@@ -281,6 +281,8 @@ Breaer Token { AccessToken}
 
 
 
+
+
 POST or PATCH /api/companies/<company_id>/addresses/company/
 {
 "name": "Head Office",

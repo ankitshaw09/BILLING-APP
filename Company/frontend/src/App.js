@@ -24,7 +24,6 @@ import CreateCompany from "./pages/CreateCompany";
 import UserProfile from "./components/SubSettings/SettingsPages/UserProfile";
 import CompanyDetails from "./components/SubSettings/SettingsPages/CompanyDetails";
 import AllCompanies from "./components/SubSettings/SettingsPages/AllCompanies";
-
 import Preferences from "./components/SubSettings/SettingsPages/Preferences";
 import Thermal from "./components/SubSettings/SettingsPages/Thermal";
 import BarcodeSettings from "./components/SubSettings/SettingsPages/BarcodeSettings";
@@ -37,6 +36,10 @@ import TallyIntegration from "./components/SubSettings/SettingsPages/TallyIntegr
 import APIIntegration from "./components/SubSettings/SettingsPages/APIIntegration";
 import SocialLinks from "./components/SubSettings/SettingsPages/SocialLinks";
 import Support from "./components/SubSettings/SettingsPages/Support";
+
+// Sales pages
+import Invoice from "./pages/sidebarPages/Invoice";
+import CreditNote from "./pages/sidebarPages/CreditNote";
 
 function App() {
   const dispatch = useDispatch();
@@ -101,8 +104,8 @@ function App() {
     <BrowserRouter>
       <div className={theme}>
         {isLoggedIn && <Navbar />}
-
         <Routes>
+        {/* dashboard  */}
           <Route
             path="/dashboard"
             element={
@@ -113,7 +116,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-
+          {/* create company */}
           <Route
             path="/create-company"
             element={
@@ -124,7 +127,31 @@ function App() {
               </ProtectedRoute>
             }
           />
+          
+          <Route
+            path="/sales/invoice"
+            element={
+              <ProtectedRoute>
+                <MainLayout>
+                  <Invoice />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/sales/credit-note"
+            element={
+              <ProtectedRoute>
+                <MainLayout>
+                  <CreditNote />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
 
+
+
+          {/* settings  */}
           <Route
             path="/settings"
             element={
@@ -151,11 +178,14 @@ function App() {
             <Route index element={<Navigate to="user-profile" replace />} />
           </Route>
 
+
+
+
           {/* Auth Routes */}
           <Route
             path="/"
             element={
-              !isLoggedIn ? <Login /> : <Navigate to="/dashboard" replace />
+              !isLoggedIn ? <Login /> : <Navigate to="/sales/invoice" replace />
             }
           />
           <Route
@@ -165,7 +195,7 @@ function App() {
           <Route
             path="*"
             element={
-              isLoggedIn ? <Navigate to="/dashboard" /> : <Navigate to="/" />
+              isLoggedIn ? <Navigate to="/sales/invoice" /> : <Navigate to="/" />
             }
           />
         </Routes>

@@ -1,27 +1,112 @@
-/* src/components/Sidebar.css */
 .sidebar {
-    width: 220px;
-    background-color: #b4b4b4;
-    /* padding: 24px; */
-    box-sizing: border-box;
-    margin : 15px 15px 15px 15px;
-    border-radius: 8px;
-    height: fit-content;
-    overflow-y: auto;
-}
-body.dark .sidebar{
-    background-color: #404040;
-
+  width: 220px;
+  background-color: #b4b4b4;
+  /* color: black; */
+  box-sizing: border-box;
+  margin: 15px;
+  border-radius: 8px;
+  height: fit-content;
+  padding: 15px;
+  overflow-y: auto;
 }
 
+body.dark .sidebar {
+  background-color: #404040;
+  /* color: white; */
+}
 
-.sidebar::-webkit-scrollbar{
-    width: 0;
+.sidebar::-webkit-scrollbar {
+  width: 0;
 }
 
 .sidebar {
-    -ms-overflow-style: none;
-    /* Hide the scrollbar for IE and Edge */
-    scrollbar-width: none;
-    /* Hide the scrollbar for Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+  /* padding: 10px 8px; */
+  padding: 5px;
+  font-weight: bold;
+  color: #000000;
+  /* background-color: #929292; */
+  /* border-radius: 6px; */
+  margin-bottom: 2px;
+  transition: background-color 0.3s ease;
+
+  cursor: pointer;
+  gap: 10px
+}
+
+.dropdown-toggle:hover {
+  /* background-color: #ccc; */
+}
+
+body.dark .dropdown-toggle {
+  /* background-color: #555; */
+  color: #ffffff;
+}
+
+
+.list-name {
+  display: flex;
+  align-items: center;
+  /* background-color: #555; */
+  font-size: 16px;
+  /* gap: 50px; */
+
+}
+
+.dropdown-icons {
+  margin-right: 10px;
+  font-size: 18px;
+
+}
+
+.downIcons {
+  font-size: 14px;
+}
+
+
+
+
+.dropdown-menu {
+  list-style: none;
+  padding: 0px 0 0px 40px;
+  /* background-color: bisque; */
+  font-weight: bold;
+  font-size: 15px;
+  
+}
+
+.menuList {
+  /* background-color: rgb(73, 46, 13); */
+  padding-top: 2px;
+  padding-bottom: 10px;
+}
+
+.menu-items {
+  color: inherit;
+  /* padding-top: 8px; */
+  text-decoration: none;
+}
+
+.items {
+  color: inherit;
+  text-decoration: none;
+  /* padding: 15px; */
+  font-size: 15px;
+  font-weight: bold;
+  /* gap: 50px; */
+  /* gap: 10px; */
+
+
+}
+
+/* .list-icons{
+  margin-right:5px ;
+} */

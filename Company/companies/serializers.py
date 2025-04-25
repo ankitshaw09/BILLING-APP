@@ -31,3 +31,4 @@ class CompanySignatureSerializer(serializers.ModelSerializer):
     class Meta:
         model = CompanySignature
         fields = '__all__'
+ 

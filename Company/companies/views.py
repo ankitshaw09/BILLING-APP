@@ -163,3 +163,4 @@ class CompanySignatureViewSet(viewsets.ModelViewSet):
             raise ValidationError("A company can only have up to 2 signatures.")
 
         serializer.save(company=company)
+ 
