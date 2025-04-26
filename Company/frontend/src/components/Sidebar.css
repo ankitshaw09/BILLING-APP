@@ -56,19 +56,20 @@ body.dark .dropdown-toggle {
   display: flex;
   align-items: center;
   /* background-color: #555; */
-  font-size: 16px;
+  font-size: 15px;
   /* gap: 50px; */
 
 }
 
 .dropdown-icons {
-  margin-right: 10px;
-  font-size: 18px;
+  margin-right: 9px;
+  font-size: 19px;
+  /* font-weight: bold; */
 
 }
 
 .downIcons {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 
@@ -103,10 +104,29 @@ body.dark .dropdown-toggle {
   font-weight: bold;
   /* gap: 50px; */
   /* gap: 10px; */
-
-
+  
+  
 }
 
-/* .list-icons{
-  margin-right:5px ;
-} */
+.list-items{
+  /* text-decoration: none; */
+  /* display: flex;
+
+  align-items: center; */
+  font-size: 15px;
+  /* gap: 12px; */
+  /* font-family:monospace; */
+  font-weight: bold;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 6px;
+  
+}
+
+.list-links{
+  display: flex;
+  align-items: center;
+  /* gap: 10px; */
+  color: inherit;
+  text-decoration: none;
+}

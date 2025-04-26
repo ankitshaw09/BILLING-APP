@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { MdDashboard } from "react-icons/md";
-import { FaBuilding, FaChevronDown } from "react-icons/fa";
-import { FaFileInvoice, FaReceipt } from "react-icons/fa6";
-import { GrCurrency } from "react-icons/gr";
-import "./Sidebar.css";
+// 
+import { FaPenFancy } from "react-icons/fa6";
+import { BiPurchaseTag } from "react-icons/bi";
+import { AiOutlineProduct } from "react-icons/ai";
+import { SiPagespeedinsights } from "react-icons/si";
+import { CiSettings, CiCircleMore } from "react-icons/ci";
+import { IoIosPricetags ,IoMdPerson  } from "react-icons/io";
+import { FaMoneyBillWaveAlt, FaChevronDown } from "react-icons/fa";
+import { TbReportAnalytics ,TbBuildingWarehouse } from "react-icons/tb";
+import { MdTrolley, MdCurrencyRupee, MdOutlinePeople } from "react-icons/md";
 
+
+
+import "./Sidebar.css";
 const Sidebar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const navigate = useNavigate();
@@ -25,7 +33,7 @@ const Sidebar = () => {
             onClick={() => toggleDropdown("sales", "/sales/invoice")}
           >
             <div className="list-name">
-              <GrCurrency className="dropdown-icons" /> Sales
+              <FaMoneyBillWaveAlt className="dropdown-icons" /> Sales
             </div>
             <FaChevronDown className="downIcons" />
           </div>
@@ -52,9 +60,9 @@ const Sidebar = () => {
             onClick={() => toggleDropdown("purchase", "/sales/invoice")}
           >
             <div className="list-name">
-              <GrCurrency className="dropdown-icons" /> Purchase
+              <BiPurchaseTag className="dropdown-icons" /> Purchase
             </div>
-            <FaChevronDown />
+            <FaChevronDown className="downIcons" />
           </div>
           {openDropdown === "purchase" && (
             <ul className="dropdown-menu">
@@ -76,6 +84,25 @@ const Sidebar = () => {
             </ul>
           )}
         </li>
+        {/* customer */}
+        <li className="list-items">
+          <Link to="/sales/invoice" className="list-links">
+            <IoMdPerson className="dropdown-icons" /> Customers
+          </Link>
+        </li>
+        {/* vendors */}
+        <li className="list-items">
+          <Link to="/sales/invoice" className="list-links">
+            <MdOutlinePeople className="dropdown-icons" /> Vendors
+          </Link>
+        </li>
+
+        {/* products */}
+        <li className="list-items">
+          <Link to="/sales/invoice" className="list-links">
+            <AiOutlineProduct className="dropdown-icons" /> Products & Services
+          </Link>
+        </li>
 
         {/* INVENTORY */}
         <li className="dropdown-item">
@@ -84,9 +111,9 @@ const Sidebar = () => {
             onClick={() => toggleDropdown("inventory", "/sales/invoice")}
           >
             <div className="list-name">
-              <GrCurrency className="dropdown-icons" /> Inventory
+              <TbBuildingWarehouse className="dropdown-icons" /> Inventory
             </div>
-            <FaChevronDown />
+            <FaChevronDown className="downIcons" />
           </div>
           {openDropdown === "inventory" && (
             <ul className="dropdown-menu">
@@ -111,9 +138,9 @@ const Sidebar = () => {
             onClick={() => toggleDropdown("payment", "/sales/invoice")}
           >
             <div className="list-name">
-              <GrCurrency className="dropdown-icons" /> Payment
+              <MdCurrencyRupee className="dropdown-icons" /> Payment
             </div>
-            <FaChevronDown />
+            <FaChevronDown className="downIcons" />
           </div>
           {openDropdown === "payment" && (
             <ul className="dropdown-menu">
@@ -141,6 +168,19 @@ const Sidebar = () => {
           )}
         </li>
 
+        {/* insites */}
+        <li className="list-items">
+          <Link to="/sales/invoice" className="list-links">
+            <SiPagespeedinsights className="dropdown-icons" /> Insites
+          </Link>
+        </li>
+        {/* reports */}
+        <li className="list-items">
+          <Link to="/sales/invoice" className="list-links">
+            <TbReportAnalytics className="dropdown-icons" /> Reports
+          </Link>
+        </li>
+
         {/* QUOTATIONS */}
         <li className="dropdown-item">
           <div
@@ -148,9 +188,9 @@ const Sidebar = () => {
             onClick={() => toggleDropdown("quotations", "/sales/invoice")}
           >
             <div className="list-name">
-              <GrCurrency className="dropdown-icons" /> Quotations
+              <FaPenFancy className="dropdown-icons" /> Quotations
             </div>
-            <FaChevronDown />
+            <FaChevronDown className="downIcons" />
           </div>
           {openDropdown === "quotations" && (
             <ul className="dropdown-menu">
@@ -180,9 +220,9 @@ const Sidebar = () => {
             onClick={() => toggleDropdown("expenses", "/sales/invoice")}
           >
             <div className="list-name">
-              <GrCurrency className="dropdown-icons" /> Expenses
+              <IoIosPricetags className="dropdown-icons" /> Expenses
             </div>
-            <FaChevronDown />
+            <FaChevronDown className="downIcons" />
           </div>
           {openDropdown === "expenses" && (
             <ul className="dropdown-menu">
@@ -199,6 +239,19 @@ const Sidebar = () => {
             </ul>
           )}
         </li>
+        {/* Online store */}
+
+        <li className="list-items">
+          <Link to="/sales/invoice" className="list-links">
+            <MdTrolley className="dropdown-icons" /> Online Store
+          </Link>
+        </li>
+        {/* store */}
+        <li className="list-items">
+          <Link to="/sales/invoice" className="list-links">
+            <CiSettings className="dropdown-icons" /> Settings
+          </Link>
+        </li>
 
         {/* MORE */}
         <li className="dropdown-item">
@@ -207,9 +260,9 @@ const Sidebar = () => {
             onClick={() => toggleDropdown("more", "/sales/invoice")}
           >
             <div className="list-name">
-              <GrCurrency className="dropdown-icons" /> More
+              <CiCircleMore className="dropdown-icons" /> More
             </div>
-            <FaChevronDown />
+            <FaChevronDown className="downIcons" />
           </div>
           {openDropdown === "more" && (
             <ul className="dropdown-menu">
@@ -225,43 +278,6 @@ const Sidebar = () => {
               </li>
             </ul>
           )}
-        </li>
-
-        {/* Other Static Links */}
-        <li>
-          <Link to="/sales/invoice">
-            <FaFileInvoice /> Customers
-          </Link>
-        </li>
-        <li>
-          <Link to="/sales/invoice">
-            <FaFileInvoice /> Vendors
-          </Link>
-        </li>
-        <li>
-          <Link to="/sales/invoice">
-            <FaFileInvoice /> Products & Services
-          </Link>
-        </li>
-        <li>
-          <Link to="/sales/credit-note">
-            <FaReceipt /> Insites
-          </Link>
-        </li>
-        <li>
-          <Link to="/sales/credit-note">
-            <FaReceipt /> Reports
-          </Link>
-        </li>
-        <li>
-          <Link to="/sales/credit-note">
-            <FaReceipt /> Online Store
-          </Link>
-        </li>
-        <li>
-          <Link to="/sales/credit-note">
-            <FaReceipt /> Settings
-          </Link>
         </li>
       </ul>
     </aside>
