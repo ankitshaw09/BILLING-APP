@@ -1,6 +1,6 @@
 .sidebar {
   width: 220px;
-  background-color: #b4b4b4;
+  background-color: #d4d4d4;
   /* color: black; */
   box-sizing: border-box;
   margin: 15px;
@@ -24,6 +24,51 @@ body.dark .sidebar {
   scrollbar-width: none;
 }
 
+
+.dropdown-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-item:hover .dropdown-icons {
+  animation: wobble 0.6s ease infinite;
+}
+
+.dropdown-item:hover .downIcons {
+  /* transform: rotate(180deg); */
+  transition: transform 0.3s ease;
+}
+
+/* Wobble keyframes for the money icon */
+@keyframes wobble {
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-3px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  75% {
+    transform: translateY(3px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Initial style to prevent sudden jump */
+.dropdown-icons,
+.downIcons {
+  transition: all 0.3s ease;
+}
+
+
 .dropdown-toggle {
   display: flex;
   align-items: center;
@@ -34,21 +79,30 @@ body.dark .sidebar {
   font-weight: bold;
   color: #000000;
   /* background-color: #929292; */
-  /* border-radius: 6px; */
-  margin-bottom: 2px;
+  margin-bottom: 5px;
   transition: background-color 0.3s ease;
 
   cursor: pointer;
-  gap: 10px
-}
+  gap: 10px;
 
-.dropdown-toggle:hover {
-  /* background-color: #ccc; */
+  &:hover {
+    border-radius: 6px;
+    background-color: #9f9f9f;
+    padding: 5px;
+  }
+
+
 }
 
 body.dark .dropdown-toggle {
   /* background-color: #555; */
   color: #ffffff;
+
+  &:hover {
+    border-radius: 6px;
+    background-color: #626262;
+    padding: 5px;
+  }
 }
 
 
@@ -77,20 +131,44 @@ body.dark .dropdown-toggle {
 
 .dropdown-menu {
   list-style: none;
-  padding: 0px 0 0px 40px;
-  /* background-color: bisque; */
+  padding: 0px 0 0px 20px;
   font-weight: bold;
   font-size: 15px;
-  
+
+  margin-bottom: 3px;
+
 }
 
 .menuList {
+  display: flex;
+  align-items: center;
   /* background-color: rgb(73, 46, 13); */
-  padding-top: 2px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-radius: 6px;
+    /* padding-bottom: 5px; */
+    background-color: #9f9f9f;
+
+
+  }
 }
 
+body.dark .menuList {
+  &:hover {
+    border-radius: 6px;
+    background-color: #626262;
+    /* padding: 5px; */
+  }
+
+}
+
+
 .menu-items {
+  display: block;
   color: inherit;
   /* padding-top: 8px; */
   text-decoration: none;
@@ -104,29 +182,70 @@ body.dark .dropdown-toggle {
   font-weight: bold;
   /* gap: 50px; */
   /* gap: 10px; */
-  
-  
+
+
 }
 
-.list-items{
-  /* text-decoration: none; */
-  /* display: flex;
+.menu-items.active {
+  /* background-color: #007bff; */
+  color: #31a7da;
+  /* font-weight: bold; */
+  /* border-radius: 4px; */
+}
 
-  align-items: center; */
+.list-items {
+  position: relative;
+  list-style: none;
   font-size: 15px;
+  /* background-color: bisque; */
   /* gap: 12px; */
   /* font-family:monospace; */
   font-weight: bold;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  padding-left: 6px;
-  
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  margin-bottom: 3px;
+
+  &:hover {
+    border-radius: 6px;
+    /* padding-bottom: 5px; */
+    background-color: #9f9f9f;
+
+
+  }
+ 
+
 }
 
-.list-links{
+body.dark .list-items {
+  &:hover {
+    border-radius: 6px;
+    /* padding-bottom: 5px; */
+    background-color: #626262;
+
+
+  }
+
+}
+
+.list-links {
   display: flex;
   align-items: center;
+  /* margin-bottom: 5px; */
   /* gap: 10px; */
   color: inherit;
   text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  &.active{
+    /* background-color: #007bff; blue background when active */
+    color: #31a7da; /* white text when active */
+    /* font-weight: bold; */
+    /* border-radius: 8px; */
+  }
+}
+
+
+
+.list-items:hover .dropdown-icons {
+  animation: wobble 0.6s ease infinite;
 }

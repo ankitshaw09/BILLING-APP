@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-// 
+import { NavLink, Link, useNavigate } from "react-router-dom";
+//
 import { FaPenFancy } from "react-icons/fa6";
 import { BiPurchaseTag } from "react-icons/bi";
 import { AiOutlineProduct } from "react-icons/ai";
 import { SiPagespeedinsights } from "react-icons/si";
 import { CiSettings, CiCircleMore } from "react-icons/ci";
-import { IoIosPricetags ,IoMdPerson  } from "react-icons/io";
+import { IoIosPricetags, IoMdPerson } from "react-icons/io";
 import { FaMoneyBillWaveAlt, FaChevronDown } from "react-icons/fa";
-import { TbReportAnalytics ,TbBuildingWarehouse } from "react-icons/tb";
+import { TbReportAnalytics, TbBuildingWarehouse } from "react-icons/tb";
 import { MdTrolley, MdCurrencyRupee, MdOutlinePeople } from "react-icons/md";
-
-
 
 import "./Sidebar.css";
 const Sidebar = () => {
@@ -40,14 +38,25 @@ const Sidebar = () => {
           {openDropdown === "sales" && (
             <ul className="dropdown-menu">
               <li className="menuList">
-                <Link to="/sales/invoice" className="menu-items">
+                <NavLink
+                  to="/sales/invoice"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Invoices
-                </Link>
+                </NavLink>
               </li>
+
               <li className="menuList">
-                <Link to="/sales/credit-note" className="menu-items">
+                <NavLink
+                  to="/sales/credit-note"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Credit Note
-                </Link>
+                </NavLink>
               </li>
             </ul>
           )}
@@ -67,41 +76,72 @@ const Sidebar = () => {
           {openDropdown === "purchase" && (
             <ul className="dropdown-menu">
               <li className="menuList">
-                <Link to="/sales/invoice" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Purchase
-                </Link>
+                </NavLink>
               </li>
+
               <li className="menuList">
-                <Link to="/sales/invoice" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Purchase Order
-                </Link>
+                </NavLink>
               </li>
               <li className="menuList">
-                <Link to="/sales/credit-note" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Debit Note
-                </Link>
+                </NavLink>
               </li>
             </ul>
           )}
         </li>
         {/* customer */}
         <li className="list-items">
-          <Link to="/sales/invoice" className="list-links">
+          <NavLink
+            to="/sales/invoice"
+            className={({ isActive }) =>
+              isActive ? "list-links active" : "list-links"
+            }
+          >
             <IoMdPerson className="dropdown-icons" /> Customers
-          </Link>
+          </NavLink>
         </li>
         {/* vendors */}
         <li className="list-items">
-          <Link to="/sales/invoice" className="list-links">
+          <NavLink
+            to="/sales/invoice"
+            className={({ isActive }) =>
+              isActive ? "list-links active" : "list-links"
+            }
+          >
             <MdOutlinePeople className="dropdown-icons" /> Vendors
-          </Link>
+          </NavLink>
         </li>
 
         {/* products */}
         <li className="list-items">
-          <Link to="/sales/invoice" className="list-links">
+          <NavLink
+            to="/sales/invoice"
+            className={({ isActive }) =>
+              isActive ? "list-links active" : "list-links"
+            }
+          >
             <AiOutlineProduct className="dropdown-icons" /> Products & Services
-          </Link>
+          </NavLink>
         </li>
 
         {/* INVENTORY */}
@@ -118,14 +158,24 @@ const Sidebar = () => {
           {openDropdown === "inventory" && (
             <ul className="dropdown-menu">
               <li className="menuList">
-                <Link to="/sales/invoice" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Warehouse
-                </Link>
+                </NavLink>
               </li>
               <li className="menuList">
-                <Link to="/sales/invoice" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Timeline
-                </Link>
+                </NavLink>
               </li>
             </ul>
           )}
@@ -145,24 +195,44 @@ const Sidebar = () => {
           {openDropdown === "payment" && (
             <ul className="dropdown-menu">
               <li className="menuList">
-                <Link to="/sales/invoice" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Settlements
-                </Link>
+                </NavLink>
               </li>
               <li className="menuList">
-                <Link to="/sales/invoice" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Timeline
-                </Link>
+                </NavLink>
               </li>
               <li className="menuList">
-                <Link to="/sales/credit-note" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Journals
-                </Link>
+                </NavLink>
               </li>
               <li className="menuList">
-                <Link to="/sales/credit-note" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Payment Links
-                </Link>
+                </NavLink>
               </li>
             </ul>
           )}
@@ -170,15 +240,25 @@ const Sidebar = () => {
 
         {/* insites */}
         <li className="list-items">
-          <Link to="/sales/invoice" className="list-links">
+          <NavLink
+            to="/sales/invoice"
+            className={({ isActive }) =>
+              isActive ? "list-links active" : "list-links"
+            }
+          >
             <SiPagespeedinsights className="dropdown-icons" /> Insites
-          </Link>
+          </NavLink>
         </li>
         {/* reports */}
         <li className="list-items">
-          <Link to="/sales/invoice" className="list-links">
+          <NavLink
+            to="/sales/invoice"
+            className={({ isActive }) =>
+              isActive ? "list-links active" : "list-links"
+            }
+          >
             <TbReportAnalytics className="dropdown-icons" /> Reports
-          </Link>
+          </NavLink>
         </li>
 
         {/* QUOTATIONS */}
@@ -195,19 +275,34 @@ const Sidebar = () => {
           {openDropdown === "quotations" && (
             <ul className="dropdown-menu">
               <li className="menuList">
-                <Link to="/sales/invoice" className="menu-items">
-                  Quotations
-                </Link>
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
+                  Quotation
+                </NavLink>
               </li>
               <li className="menuList">
-                <Link to="/sales/invoice" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Delivery Challan
-                </Link>
+                </NavLink>
               </li>
               <li className="menuList">
-                <Link to="/sales/credit-note" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Sales Order
-                </Link>
+                </NavLink>
               </li>
             </ul>
           )}
@@ -227,14 +322,24 @@ const Sidebar = () => {
           {openDropdown === "expenses" && (
             <ul className="dropdown-menu">
               <li className="menuList">
-                <Link to="/sales/invoice" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Expenses
-                </Link>
+                </NavLink>
               </li>
               <li className="menuList">
-                <Link to="/sales/invoice" className="menu-items">
-                  Indirect Income
-                </Link>
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
+                  Indirect Incomes
+                </NavLink>
               </li>
             </ul>
           )}
@@ -242,15 +347,26 @@ const Sidebar = () => {
         {/* Online store */}
 
         <li className="list-items">
-          <Link to="/sales/invoice" className="list-links">
+          {/* <Link to="/sales/invoice" className="list-links"> */}
+          <NavLink
+            to="/sales/invoice"
+            className={({ isActive }) =>
+              isActive ? "list-links active" : "list-links"
+            }
+          >
             <MdTrolley className="dropdown-icons" /> Online Store
-          </Link>
+          </NavLink>
         </li>
-        {/* store */}
+        {/* Settings */}
         <li className="list-items">
-          <Link to="/sales/invoice" className="list-links">
+          <NavLink
+            to="/sales/invoice"
+            className={({ isActive }) =>
+              isActive ? "list-links active" : "list-links"
+            }
+          >
             <CiSettings className="dropdown-icons" /> Settings
-          </Link>
+          </NavLink>
         </li>
 
         {/* MORE */}
@@ -267,14 +383,24 @@ const Sidebar = () => {
           {openDropdown === "more" && (
             <ul className="dropdown-menu">
               <li className="menuList">
-                <Link to="/sales/credit-note" className="menu-items">
+                <NavLink
+                  to="/sales/purchase"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   My Drive
-                </Link>
+                </NavLink>
               </li>
               <li className="menuList">
-                <Link to="/sales/credit-note" className="menu-items">
+                <NavLink
+                  to="/sales/invoice"
+                  className={({ isActive }) =>
+                    isActive ? "menu-items active" : "menu-items"
+                  }
+                >
                   Tally
-                </Link>
+                </NavLink>
               </li>
             </ul>
           )}
