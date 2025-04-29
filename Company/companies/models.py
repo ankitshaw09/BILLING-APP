@@ -69,3 +69,4 @@ class CompanySignature(models.Model):
         return f"{self.company.trade_name} - {self.name}"
 
 
+

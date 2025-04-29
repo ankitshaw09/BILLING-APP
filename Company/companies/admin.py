@@ -34,3 +34,5 @@ class CompanySignatureAdmin(admin.ModelAdmin):
     list_display = ('id', 'company', 'name', 'signature_image')
     search_fields = ('name', 'company__trade_name')
     list_filter = ('company',)
+
+
