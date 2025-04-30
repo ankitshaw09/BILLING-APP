@@ -44,4 +44,59 @@ class Customer(models.Model):
         return (
             f"{self.name} - {self.company_name or 'No Company'} (Customer of {self.company.trade_name})"
         )
-    # pass
+
+
+class BaseAddress(models.Model):
+    name = models.CharField(max_length=255, help_text="Name of the address (e.g., 'Main Office', 'Warehouse')")
+    address_line_1 = models.CharField(max_length=255, help_text="Street address, P.O. box, company name")
+    address_line_2 = models.CharField(max_length=255, blank=True, null=True, help_text="Apartment, suite, unit, building, floor, etc.")
+    pincode = models.CharField(max_length=10, help_text="Postal/ZIP code")
+    city = models.CharField(max_length=100, help_text="City/Town")
+    state = models.CharField(max_length=100, help_text="State/Province/Region")
+    country = models.CharField(max_length=100, default='India', help_text="Country")
+
+    class Meta: 
+        abstract = True
+
+    def __str__(self):
+        return f"{self.name} - {self.address_line_1}, {self.city}"
+
+
+class BillingAddress(BaseAddress):
+    customer = models.OneToOneField(
+        Customer,
+        on_delete=models.CASCADE,
+        related_name='billing_address',
+        help_text="Customer this billing address belongs to"
+    )
+
+    class Meta:
+        verbose_name = "Billing Address"
+        verbose_name_plural = "Billing Addresses"
+
+
+class ShippingAddress(BaseAddress):
+    customer = models.ForeignKey(
+        Customer,
+        on_delete=models.CASCADE,
+        related_name='shipping_addresses',
+        help_text="Customer this shipping address belongs to"
+    )
+    is_default = models.BooleanField(
+        default=False,
+        help_text="Whether this is the default shipping address for the customer"
+    )
+
+    class Meta:
+        verbose_name = "Shipping Address"
+        verbose_name_plural = "Shipping Addresses"
+        ordering = ['-is_default', 'name']
+
+    def save(self, *args, **kwargs):
+        # If this is being set as default, unset all other defaults for this customer
+        if self.is_default:
+            ShippingAddress.objects.filter(
+                customer=self.customer,
+                is_default=True
+            ).exclude(id=self.id).update(is_default=False)
+        super().save(*args, **kwargs)
