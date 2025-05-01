@@ -36,9 +36,6 @@ class CustomerAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         return super().get_queryset(request).select_related('company')
 
-
-
-
 @admin.register(BillingAddress)
 class BillingAddressAdmin(admin.ModelAdmin):
     list_display = (
@@ -80,3 +77,11 @@ class ShippingAddressAdmin(admin.ModelAdmin):
             'fields': ('is_default',)
         }),
     )
+
+
+
+@admin.register(OpeningBalance)
+class OpeningBalanceAdmin(admin.ModelAdmin):
+    list_display = ('customer', 'debit', 'credit', 'created_at')
+    search_fields = ('customer__name', 'customer__company_name')
+    list_filter = ('created_at',)

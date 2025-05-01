@@ -36,3 +36,12 @@ class CompanySignatureAdmin(admin.ModelAdmin):
     list_filter = ('company',)
 
 
+
+
+@admin.register(AdditionalField)
+class AdditionalFieldAdmin(admin.ModelAdmin):
+    list_display = ('id','label', 'value', 'company')
+    list_filter = ('company',)
+    search_fields = ('label', 'value', 'company__name')
+    list_per_page = 25
+    ordering = ('company', 'label')

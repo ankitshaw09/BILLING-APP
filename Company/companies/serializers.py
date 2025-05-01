@@ -32,4 +32,16 @@ class CompanySignatureSerializer(serializers.ModelSerializer):
         model = CompanySignature
         fields = '__all__'
  
- 
+  
+
+
+from rest_framework import serializers
+from .models import AdditionalField
+
+class AdditionalFieldSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AdditionalField
+        fields = ['id', 'company', 'label', 'value']
+        extra_kwargs = {
+            'company': {'write_only': True}
+        }

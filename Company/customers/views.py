@@ -182,3 +182,51 @@ class ShippingAddressDetailView(generics.RetrieveUpdateDestroyAPIView):
     def perform_update(self, serializer):
         # Save the updated shipping address (partial updates)
         serializer.save()
+
+
+# views.py
+# views.py
+
+from rest_framework import generics, permissions
+from .models import Customer, OpeningBalance
+from .serializers import OpeningBalanceSerializer
+from rest_framework.exceptions import NotFound
+
+class OpeningBalanceCreateView(generics.CreateAPIView):
+    serializer_class = OpeningBalanceSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        company_id = self.kwargs.get('company_id')
+        customer_index = int(self.kwargs.get('customer_id'))
+
+        customers = Customer.objects.filter(company_id=company_id).order_by('id')
+        try:
+            customer = list(customers)[customer_index - 1]
+        except IndexError:
+            raise NotFound("Customer not found")
+
+        if hasattr(customer, 'opening_balance'):
+            raise NotFound("Opening balance already exists for this customer")
+
+        serializer.save(customer=customer)
+
+
+class OpeningBalanceDetailView(generics.RetrieveUpdateAPIView):
+    serializer_class = OpeningBalanceSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        company_id = self.kwargs.get('company_id')
+        customer_index = int(self.kwargs.get('customer_id'))
+
+        customers = Customer.objects.filter(company_id=company_id).order_by('id')
+        try:
+            customer = list(customers)[customer_index - 1]
+        except IndexError:
+            raise NotFound("Customer not found")
+
+        try:
+            return customer.opening_balance
+        except OpeningBalance.DoesNotExist:
+            raise NotFound("Opening balance not found")

@@ -100,3 +100,25 @@ class ShippingAddress(BaseAddress):
                 is_default=True
             ).exclude(id=self.id).update(is_default=False)
         super().save(*args, **kwargs)
+
+
+from django.db import models
+from .models import Customer
+
+class OpeningBalance(models.Model):
+    customer = models.OneToOneField(Customer, on_delete=models.CASCADE, related_name='opening_balance')
+    debit = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    credit = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name = "Opening Balance"
+        verbose_name_plural = "Opening Balances"
+
+    def __str__(self):
+        return f"Opening Balance for {self.customer.name}"
+
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        if self.debit and self.credit:
+            raise ValidationError("Only one of debit or credit can be non-zero.")

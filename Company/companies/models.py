@@ -39,7 +39,7 @@ class CompanyAddress(BaseAddress):
 
     def __str__(self):
         return f"{self.company.trade_name} - Company Address"
-
+ 
 class BillingAddress(BaseAddress):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='billing_addresses')
 
@@ -69,4 +69,10 @@ class CompanySignature(models.Model):
         return f"{self.company.trade_name} - {self.name}"
 
 
+class AdditionalField(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='additional_fields')
+    label = models.CharField(max_length=255)
+    value = models.TextField(blank=True)
 
+    def __str__(self):
+        return f"{self.label} - {self.company.proprietor_name}"

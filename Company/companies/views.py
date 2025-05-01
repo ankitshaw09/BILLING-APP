@@ -164,4 +164,74 @@ class CompanySignatureViewSet(viewsets.ModelViewSet):
 
         serializer.save(company=company)
  
- 
+
+
+from rest_framework import generics, permissions
+from .models import AdditionalField
+from .serializers import AdditionalFieldSerializer
+from companies.models import Company
+
+class AdditionalFieldCreateView(generics.CreateAPIView):
+    serializer_class = AdditionalFieldSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        company_id = self.kwargs.get('company_id')
+        company = Company.objects.get(id=company_id)
+        serializer.save(company=company)
+
+class AdditionalFieldDetailView(generics.RetrieveAPIView):
+    serializer_class = AdditionalFieldSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        company_id = self.kwargs.get('company_id')
+        field_id = self.kwargs.get('field_id')
+        try:
+            return AdditionalField.objects.get(id=field_id, company_id=company_id)
+        except AdditionalField.DoesNotExist:
+            raise NotFound("Additional field not found")
+
+class AdditionalFieldListView(generics.ListAPIView):
+    serializer_class = AdditionalFieldSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        company_id = self.kwargs.get('company_id')
+        return AdditionalField.objects.filter(company_id=company_id)
+
+from rest_framework import generics, permissions
+from .models import AdditionalField
+from .serializers import AdditionalFieldSerializer
+from rest_framework.exceptions import NotFound
+
+class AdditionalFieldUpdateView(generics.UpdateAPIView):
+    serializer_class = AdditionalFieldSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        company_id = self.kwargs.get('company_id')
+        field_id = self.kwargs.get('field_id')
+
+        try:
+            return AdditionalField.objects.get(id=field_id, company_id=company_id)
+        except AdditionalField.DoesNotExist:
+            raise NotFound("Additional field not found")
+
+    def perform_update(self, serializer):
+        serializer.save()
+
+from rest_framework import generics, permissions
+from .models import AdditionalField
+from rest_framework.exceptions import NotFound
+
+class AdditionalFieldDeleteView(generics.DestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        company_id = self.kwargs.get('company_id')
+        field_id = self.kwargs.get('field_id')
+        try:
+            return AdditionalField.objects.get(id=field_id, company_id=company_id)
+        except AdditionalField.DoesNotExist:
+            raise NotFound("Additional field not found")

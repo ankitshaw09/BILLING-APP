@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Customer, BillingAddress, ShippingAddress
+from .models import *
 
 
 class CustomerSerializer(serializers.ModelSerializer):
@@ -100,3 +100,17 @@ class ShippingAddressSerializer(BaseAddressSerializer):
                     {"is_default": "Customer already has a default shipping address"}
                 )
         return data
+
+
+# serializers.py
+
+from rest_framework import serializers
+from .models import OpeningBalance
+
+class OpeningBalanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OpeningBalance
+        fields = ['id', 'customer', 'debit', 'credit','created_at']
+        extra_kwargs = {
+            'customer': {'write_only': True},
+        }
