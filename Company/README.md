@@ -55,4 +55,4 @@ Explore the full list of available APIs using Postman:
 1. **Clone the repo**:
    ```bash
    git clone https://github.com/ankitshaw09/BILLING-APP.git
-   cd bill-stock-management
+   
