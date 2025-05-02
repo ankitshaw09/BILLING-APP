@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'accounts',
     'companies',
     'customers',
+    'products',
     # 'banks',
 
 ]
